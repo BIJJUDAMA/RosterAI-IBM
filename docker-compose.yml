@@ -1,0 +1,27 @@
+services:
+  # Database (PostgreSQL with pgvector - stores 768-dim vectors from IBM watsonx.ai)
+  postgres:
+    container_name: roster-ibm-postgres
+    image: ankane/pgvector
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: roster
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # Caching (Redis for embeddings and status)
+  redis:
+    container_name: roster-ibm-redis
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+# Made with Bob

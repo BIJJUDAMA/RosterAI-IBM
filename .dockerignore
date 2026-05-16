@@ -1,0 +1,14 @@
+models/
+venv/
+.venv/
+temp_processing/
+resumes/*
+projects/*
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.git/
+.env
+.vscode/
+.idea/
